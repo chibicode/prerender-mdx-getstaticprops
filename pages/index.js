@@ -10,6 +10,7 @@ const components = {
 }
 
 const Home = ({ compiledMdx }) => {
+  // See: https://github.com/mdx-js/mdx/blob/732252ebb44949e7b1b6778b5f9aa584582e5dee/packages/runtime/src/index.js#L43-L51
   // eslint-disable-next-line no-new-func
   const fn = new Function(
     '_fn',
@@ -26,10 +27,12 @@ export async function getStaticProps() {
   // You'll fetch this markdown from somewhere
   const markdownString = '# Foo'
 
-  // Precompile MDX on the server side
+  // Precompile MDX on the server side.
+  // See: https://github.com/mdx-js/mdx/blob/732252ebb44949e7b1b6778b5f9aa584582e5dee/packages/runtime/src/index.js#L22-L28
   const compiled = await mdx(markdownString, { skipExport: true })
 
-  // Transform JSX to JS so it can be embedded in new Function()
+  // Transform JSX to JS so it can be embedded in new Function().
+  // See: https://github.com/mdx-js/mdx/blob/732252ebb44949e7b1b6778b5f9aa584582e5dee/packages/runtime/src/index.js#L30-L38
   let compiledMdx
   try {
     compiledMdx = transform(compiled, {
