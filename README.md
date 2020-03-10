@@ -1,1 +1,1 @@
-# Example: Pre-render MDX on the server side using getStaticProps()
+# Experimental: Pre-render MDX on the server side using getStaticProps()
